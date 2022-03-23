@@ -1,0 +1,6 @@
+[submodule "Source"]
+	path = Nitro/Sources
+	url = https://git.krews.org/nitro/nitro-react
+[submodule "Sources"]
+	path = Arcturus/Sources
+	url = https://git.krews.org/morningstar/Arcturus-Community

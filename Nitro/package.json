@@ -1,0 +1,41 @@
+{
+  "name": "nitro-react",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env BROWSER=none IMAGE_INLINE_SIZE_LIMIT=100000 craco start",
+    "build": "cross-env GENERATE_SOURCEMAP=false IMAGE_INLINE_SIZE_LIMIT=100000 craco build",
+    "build:prod": "npx browserslist@latest --update-db && yarn build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@craco/craco": "^6.4.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@nitrots/nitro-renderer": "^1.1.7",
+    "animate.css": "^4.1.1",
+    "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-alpha.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-slider": "^1.3.1",
+    "react-transition-group": "^4.4.2",
+    "react-virtualized": "^9.22.3",
+    "react-youtube": "^7.13.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.19",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-slider": "^1.3.1",
+    "@types/react-transition-group": "^4.4.2",
+    "@types/react-virtualized": "^9.21.13",
+    "@typescript-eslint/eslint-plugin": "^4.29.1"
+  }
+}

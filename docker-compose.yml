@@ -1,0 +1,64 @@
+version: "3"
+services:
+  emulator:
+    build: ./Arcturus/
+    ports: 
+    - "3000:3000"
+    - "2096:2096"
+    restart: always
+    volumes:
+      - maven_repo:/root/.m2
+    depends_on:
+      - database
+    environment:
+      - "DB_HOSTNAME=database"
+      - "DB_PORT=3306"
+      - "DB_DATABASE=arcturus"
+      - "DB_USERNAME=emulator"
+      - "DB_PASSWORD=emu_password"
+      - "DB_PARAMS="
+      - "EMU_HOST=0.0.0.0"
+      - "EMU_PORT=3000"
+      - "RCON_HOST=127.0.0.1"
+      - "RCON_PORT=3001"
+      - "RCON_ALLOWED=127.0.0.1"
+      - "JAVA_OPTS=-Dfile.encoding=UTF-8 -Duser.country=FR -Duser.language=fr"
+  nitro:
+    build: ./Nitro/
+    ports:
+    - "8080:3000"
+    restart: always
+    depends_on:
+      - arcturus
+    environment:
+      - NODE_OPTIONS=--openssl-legacy-provider
+  database:
+    image: mariadb
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./Database/database.sql:/docker-entrypoint-initdb.d/database.sql
+    restart: always
+    ports:
+      - "3306"
+    environment:
+      - "MARIADB_ROOT_PASSWORD=root_password"
+      - "MARIADB_DATABASE=arcturus"
+      - "MARIADB_USER=emulator"
+      - "MARIADB_PASSWORD=emu_password"
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - database
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - PMA_HOST=database
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=root_password
+      - UPLOAD_LIMIT=8192K
+
+volumes:
+  db_data: {}
+  maven_repo: {}
