@@ -45,6 +45,17 @@ services:
       - "MARIADB_DATABASE=arcturus"
       - "MARIADB_USER=emulator"
       - "MARIADB_PASSWORD=emu_password"
+  assets:
+    build: ./Assets/
+    ports:
+      - "8081:80"
+    restart: always
+    depends_on:
+      - nitro
+    volumes:
+      - assets:/usr/share/nginx/html
+    environment:
+      - "HTTP_PROXY=http://127.0.0.1:8888"
   phpmyadmin:
     image: phpmyadmin
     depends_on:
@@ -62,3 +73,4 @@ services:
 volumes:
   db_data: {}
   maven_repo: {}
+  assets: {}
