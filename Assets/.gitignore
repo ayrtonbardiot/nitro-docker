@@ -41,7 +41,6 @@ yarn-error.log
 testem.log
 /typings
 .git
-*.log
 
 # System Files
 .DS_Store
@@ -50,8 +49,3 @@ Thumbs.db
 *.zip
 *.as
 *.bin
-.env
-/assets
-
-# Nitro
-/src/configuration.json
