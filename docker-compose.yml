@@ -54,8 +54,6 @@ services:
       - nitro
     volumes:
       - assets:/usr/share/nginx/html
-    environment:
-      - "HTTP_PROXY=http://127.0.0.1:8888"
   phpmyadmin:
     image: phpmyadmin
     depends_on:
