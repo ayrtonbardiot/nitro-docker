@@ -8,6 +8,6 @@ RUN mvn clean package && mv /emulator/target/Habbo*-with-dependencies.jar /emula
 
 FROM openjdk:8u322-jre-slim AS runner
 
-COPY --from=builder /emulator/target/Habbo.jar /emulator/config.ini /
+COPY --from=builder /emulator/target/Habbo.jar /
 
 ENTRYPOINT exec java $JAVA_OPTS -jar Habbo.jar
